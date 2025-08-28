@@ -38,5 +38,7 @@ testem.log
 /typings
 
 # System files
+.vscode/*
+!.vscode/extensions.json
 .DS_Store
 Thumbs.db
