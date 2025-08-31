@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HttpInterceptorInterceptor } from './services/http-interceptor/http-interceptor.interceptor';
+import { SharedModule } from '../modules/shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
+  ],
+  exports: [
+    HeaderComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true }
