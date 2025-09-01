@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()

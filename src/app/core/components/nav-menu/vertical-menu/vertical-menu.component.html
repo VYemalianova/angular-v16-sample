@@ -1,0 +1,65 @@
+<div class="horoscope-nav-wrapper gradient--selago-wisppink">
+  <nav class="horoscope-nav">
+    <ng-container *ngIf="!isUserLoggedIn">
+      <a routerLink="/horoscope/daily" class="menu-list-item">
+        <strong>Horoscope</strong>
+      </a>
+      <a routerLink="/horoscope/love" class="menu-list-item">
+        <strong>Love Horoscope</strong>
+      </a>
+    </ng-container>
+
+    <mat-accordion class="accordion" [multi]="false">
+      <ng-container *ngIf="isUserLoggedIn">
+        <mat-expansion-panel class="gradient--selago-wisppink">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Horoscope Type</strong>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <app-menu-item
+            *ngFor="let item of horoscopeOptions"
+            [item]="item"
+            [navigateTo]="'horoscope/' + HoroscopeType.daily"
+          >
+          </app-menu-item>
+        </mat-expansion-panel>
+      </ng-container>
+
+      <mat-expansion-panel class="gradient--selago-wisppink">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>Daily Sign Horoscope</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-menu-item
+          *ngFor="let item of signsOptions"
+          [item]="item"
+          [navigateTo]="'horoscope/' + HoroscopeType.daily + '/' + item.value"
+        >
+        </app-menu-item>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="gradient--selago-wisppink">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>Love Sign Horoscope</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-menu-item
+          *ngFor="let item of signsOptions"
+          [item]="item"
+          [navigateTo]="'horoscope/' + HoroscopeType.love + '/' + item.value"
+        >
+        </app-menu-item>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </nav>
+
+  <div class="mt-s ml-m">
+    <app-logo></app-logo>
+  </div>
+</div>
