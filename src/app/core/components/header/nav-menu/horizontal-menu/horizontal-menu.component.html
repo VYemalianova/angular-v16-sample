@@ -1,0 +1,56 @@
+<div class="horoscope-nav-wrapper gradient--selago-wisppink">
+  <nav class="horoscope-nav">
+    <ng-container *ngIf="!isUserLoggedIn">
+      <a routerLink="/horoscope/daily" mat-flat-button class="text-link-button">
+        Daily Horoscope
+      </a>
+      <a routerLink="/horoscope/love" mat-flat-button class="text-link-button">
+        Love Horoscope
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isUserLoggedIn">
+      <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="horoscopeMenu">
+        Horoscope Type
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+    </ng-container>
+
+    <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="signMenu">
+      Daily Sign Horoscope
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+
+    <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="loveMenu">
+      Love Sign Horoscope
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+  </nav>
+</div>
+
+<mat-menu #signMenu="matMenu">
+  <app-menu-item
+    *ngFor="let item of signsOptions"
+    [item]="item"
+    [navigateTo]="'horoscope/' + HoroscopeType.daily + '/' + item.value"
+  >
+  </app-menu-item>
+</mat-menu>
+
+<mat-menu #loveMenu="matMenu">
+  <app-menu-item
+    *ngFor="let item of signsOptions"
+    [item]="item"
+    [navigateTo]="'horoscope/' + HoroscopeType.love + '/' + item.value"
+  >
+  </app-menu-item>
+</mat-menu>
+
+<mat-menu #horoscopeMenu="matMenu">
+  <app-menu-item
+    *ngFor="let item of horoscopeOptions"
+    [item]="item"
+    [navigateTo]="'horoscope/' + HoroscopeType.daily"
+  >
+  </app-menu-item>
+</mat-menu>
