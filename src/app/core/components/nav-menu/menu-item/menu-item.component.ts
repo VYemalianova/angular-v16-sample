@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IOption } from '../../../../../modules/shared/models/option.model';
+
+import { IOption } from '../../../../modules/shared/models/option.model';
 
 @Component({
   selector: 'app-menu-item',

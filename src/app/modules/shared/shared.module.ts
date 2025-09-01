@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { LogoComponent } from './components/logo/logo.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,18 @@ import { AvatarComponent } from './components/avatar/avatar.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatExpansionModule,
   ],
   exports: [
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatExpansionModule,
+
     LogoComponent,
     AvatarComponent,
   ]
