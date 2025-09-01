@@ -7,7 +7,7 @@ import { HoroscopeType } from '../../../../../modules/shared/models/horoscope.mo
 import { IOption } from '../../../../../modules/shared/models/option.model';
 import { getFormattedDateRange } from '../../../../../modules/shared/utils/dateUtils';
 import { ISign } from '../../../../../modules/shared/models/sign.model';
-import { SignService } from '../../../../../modules/shared/services/sign/sign.service';
+import { SignsService } from '../../../../../modules/shared/services/signs/signs.service';
 
 @Component({
   selector: 'app-horizontal-menu',
@@ -23,7 +23,7 @@ export class HorizontalMenuComponent extends OnDestroyDirective implements OnIni
   horoscopeOptions: IOption[] = [];
 
     constructor(
-    private readonly signService: SignService,
+    private readonly signsService: SignsService,
     private readonly authService: AuthService,
   ) {
     super();
@@ -37,7 +37,7 @@ export class HorizontalMenuComponent extends OnDestroyDirective implements OnIni
       value,
     }));
     
-    this.signService.getSigns().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
+    this.signsService.getSigns().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
       this.signsOptions = signs.map((sign) => ({
         id: sign.id,
         value: sign.signType,

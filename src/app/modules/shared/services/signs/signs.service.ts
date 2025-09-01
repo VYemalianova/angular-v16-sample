@@ -8,7 +8,7 @@ import { ISign } from '../../models/sign.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SignService {
+export class SignsService {
   signs: ISign[] = [];
 
   constructor(private readonly http: HttpClient) { }
