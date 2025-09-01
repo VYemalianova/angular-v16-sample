@@ -9,13 +9,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HorizontalMenuComponent } from './components/nav-menu/horizontal-menu/horizontal-menu.component';
 import { MenuItemComponent } from './components/nav-menu/menu-item/menu-item.component';
 import { VerticalMenuComponent } from './components/nav-menu/vertical-menu/vertical-menu.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HorizontalMenuComponent,
     MenuItemComponent,
-    VerticalMenuComponent
+    VerticalMenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { VerticalMenuComponent } from './components/nav-menu/vertical-menu/verti
     HeaderComponent,
     HorizontalMenuComponent,
     VerticalMenuComponent,
+    FooterComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true }
