@@ -4,6 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { LogoComponent } from './components/logo/logo.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
@@ -21,12 +24,18 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatMenuModule,
     MatExpansionModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
     MatExpansionModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
 
     LogoComponent,
     AvatarComponent,

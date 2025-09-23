@@ -10,6 +10,8 @@ import { HorizontalMenuComponent } from './components/nav-menu/horizontal-menu/h
 import { MenuItemComponent } from './components/nav-menu/menu-item/menu-item.component';
 import { VerticalMenuComponent } from './components/nav-menu/vertical-menu/vertical-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthModalComponent } from './components/auth/auth-modal/auth-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import { FooterComponent } from './components/footer/footer.component';
     HorizontalMenuComponent,
     MenuItemComponent,
     VerticalMenuComponent,
-    FooterComponent
+    FooterComponent,
+    AuthModalComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     SharedModule
   ],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
 
 import { HoroscopeType } from '../../../../modules/shared/models/horoscope.model';
@@ -10,16 +10,15 @@ import { OnDestroyDirective } from '../../../directives/on-destroy.directive';
 import { AuthService } from '../../../services/auth/auth.service';
 
 
-
 @Component({
   selector: 'app-horizontal-menu',
   templateUrl: './horizontal-menu.component.html',
   styleUrls: ['./horizontal-menu.component.scss']
 })
 export class HorizontalMenuComponent extends OnDestroyDirective implements OnInit {
-  readonly HoroscopeType = HoroscopeType;
+  @Input({ required: true }) isUserLoggedIn!: boolean;
 
-  isUserLoggedIn = false;
+  readonly HoroscopeType = HoroscopeType;
 
   signsOptions: IOption[] = [];
   horoscopeOptions: IOption[] = [];
@@ -32,8 +31,6 @@ export class HorizontalMenuComponent extends OnDestroyDirective implements OnIni
   }
 
   ngOnInit(): void {
-    this.isUserLoggedIn = Boolean(this.authService.getUser());
-
     this.horoscopeOptions = Object.entries(HoroscopeType).map(([key, value]) => ({
       id: key,
       value,

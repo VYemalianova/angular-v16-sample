@@ -16,11 +16,10 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class VerticalMenuComponent extends OnDestroyDirective implements OnInit, OnChanges {
   @Input({ required: true }) isMenuClosed!: boolean;
+  @Input({ required: true }) isUserLoggedIn!: boolean;
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
   readonly HoroscopeType = HoroscopeType;
-
-  isUserLoggedIn = false;
 
   signsOptions: IOption[] = [];
   horoscopeOptions: IOption[] = [];
@@ -39,8 +38,6 @@ export class VerticalMenuComponent extends OnDestroyDirective implements OnInit,
   }
 
   ngOnInit(): void {
-    this.isUserLoggedIn = Boolean(this.authService.getUser());
-
     this.horoscopeOptions = Object.entries(HoroscopeType).map(([key, value]) => ({
       id: key,
       value,

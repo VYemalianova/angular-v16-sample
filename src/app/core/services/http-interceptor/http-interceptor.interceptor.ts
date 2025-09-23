@@ -43,5 +43,9 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
   private handleError(res: HttpErrorResponse) {
     console.error(res.status, res.statusText);
+
+     if (res.status === 401) {
+      this.authService.clearAuthData();
+     }
   }
 }
