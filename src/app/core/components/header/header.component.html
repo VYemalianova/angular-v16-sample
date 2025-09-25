@@ -10,12 +10,22 @@
 
     <div class="btns-wrapper">
       <button
-        *ngIf="!isUserLoggedIn"
+        *ngIf="isUserLoggedIn; else signIn"
         mat-flat-button color="primary" class="dark-button"
-        (click)="onSignin()"
+        (click)="onSignout()"
       >
-        Sign In
+        Sign out
       </button>
+
+      <ng-template #signIn>
+        <button
+          *ngIf="!isUserLoggedIn"
+          mat-flat-button color="primary" class="dark-button"
+          (click)="onSignin()"
+        >
+          Sign In
+        </button>
+      </ng-template>
       <button mat-flat-button color="primary" class="gradient-button" (click)="onLivePsychics()">Live Psychics</button>
     </div>
   </div>
