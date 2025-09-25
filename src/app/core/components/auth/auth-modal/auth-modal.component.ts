@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, takeUntil } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { controlMatchValidator } from '../../../../modules/shared/validators/password-match.validator';
 import { OnDestroyDirective } from '../../../directives/on-destroy.directive';
 import { AuthService } from '../../../services/auth/auth.service';
-import { MatDialogRef } from '@angular/material/dialog';
 
 enum AuthMode {
   signup = 'signup',

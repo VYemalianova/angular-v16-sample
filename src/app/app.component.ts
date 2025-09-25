@@ -38,7 +38,6 @@ export class AppComponent extends OnDestroyDirective implements OnInit {
       this.authService.setAuthData(storedUser as IUser, storedToken as string);
     }
 
-
     this.router.events.pipe(
       takeUntil(this.destroy$),
       filter(e => e instanceof NavigationEnd))
@@ -56,10 +55,6 @@ export class AppComponent extends OnDestroyDirective implements OnInit {
 
     this.authService.user$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
       this.isUserLoggedIn = Boolean(user);
-
-      if (!user) {
-        this.authService.clearAuthData();
-      }
     });
   }
 }

@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('./modules/horoscope/horoscope.module').then((m) => m.HoroscopeModule),
+    loadChildren: () => import('./modules/not-found/not-found.module').then((m) => m.NotFoundModule),
   },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
 ];
