@@ -7,7 +7,6 @@ import { ISign } from '../../../../modules/shared/models/sign.model';
 import { SignsService } from '../../../../modules/shared/services/signs/signs.service';
 import { getFormattedDateRange } from '../../../../modules/shared/utils/dateUtils';
 import { OnDestroyDirective } from '../../../directives/on-destroy.directive';
-import { AuthService } from '../../../services/auth/auth.service';
 
 
 @Component({
@@ -23,10 +22,7 @@ export class HorizontalMenuComponent extends OnDestroyDirective implements OnIni
   signsOptions: IOption[] = [];
   horoscopeOptions: IOption[] = [];
 
-    constructor(
-    private readonly signsService: SignsService,
-    private readonly authService: AuthService,
-  ) {
+  constructor(private readonly signsService: SignsService) {
     super();
   }
 

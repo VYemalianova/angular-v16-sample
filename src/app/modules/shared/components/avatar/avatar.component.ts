@@ -7,5 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AvatarComponent {
   @Input({ required: true }) imagePath!: string;
+  @Input() width!: string;
+  @Input() height!: string;
   @Input() backgroundColor = 'linear-gradient(to right, #630cd2, #f95f86)';
 }

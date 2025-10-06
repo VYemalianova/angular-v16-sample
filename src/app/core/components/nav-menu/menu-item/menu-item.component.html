@@ -1,5 +1,5 @@
 <a class="menu-item" [routerLink]="navigateTo" mat-menu-item>
-  <div><app-avatar *ngIf="item.icon" [imagePath]="item.icon"></app-avatar></div>
+  <app-avatar *ngIf="item.icon" [imagePath]="item.icon"></app-avatar>
 
   <div class="menu-item__content">
     <span class="menu-item__value">{{item.value}}</span>

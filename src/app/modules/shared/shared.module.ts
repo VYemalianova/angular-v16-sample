@@ -11,11 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { LogoComponent } from './components/logo/logo.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { RouterModule } from '@angular/router';
+import { SignsBannerComponent } from './components/signs-banner/signs-banner.component';
 
 @NgModule({
   declarations: [
     LogoComponent,
     AvatarComponent,
+    SignsBannerComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { RouterModule } from '@angular/router';
 
     LogoComponent,
     AvatarComponent,
+    SignsBannerComponent,
   ]
 })
 export class SharedModule { }
