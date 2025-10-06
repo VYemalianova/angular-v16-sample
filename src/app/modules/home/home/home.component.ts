@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HoroscopeType } from '../../shared/models/horoscope.model';
 
 @Component({
   selector: 'app-home',
@@ -14,4 +15,6 @@ export class HomeComponent {
       history.replaceState({}, '');
     }
   }
+
+  readonly HoroscopeType = HoroscopeType;
 }
