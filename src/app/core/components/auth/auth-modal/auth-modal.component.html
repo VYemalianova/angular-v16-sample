@@ -9,7 +9,7 @@
     </div>
 
     <form [formGroup]="form" class="form-wrapper">
-      <mat-form-field class="lmn-form-field-m" appearance="outline">
+      <mat-form-field class="form-field-m" appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
 
@@ -17,7 +17,7 @@
         <mat-error *ngIf="form.get('email')?.getError('email')">Invalid email</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="lmn-form-field-m" appearance="outline">
+      <mat-form-field class="form-field-m" appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" />
         
@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <ng-container *ngIf="!isSigninMode">
-        <mat-form-field class="lmn-form-field-m" appearance="outline">
+        <mat-form-field class="form-field-m" appearance="outline">
           <mat-label>Confirm Password</mat-label>
           <input matInput formControlName="confirmPassword" />
 

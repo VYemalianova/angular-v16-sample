@@ -1,0 +1,11 @@
+<div class="" [ngClass]="'toaster-' + data.type">
+  <mat-icon>{{ icon }}</mat-icon>
+
+  <div>
+    <div class="title">{{ data.title }}</div>
+    <div *ngIf="data.details" class="details">{{ data.details }}</div>
+    <ng-container *ngIf="data.template" [ngTemplateOutlet]="data.template"></ng-container>
+  </div>
+
+  <mat-icon (click)="data.close()">close</mat-icon>
+</div>

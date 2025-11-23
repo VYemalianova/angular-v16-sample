@@ -10,11 +10,16 @@ import { catchError, Observable } from 'rxjs';
 
 import { environment } from '../../../../../environments/environment';
 import { AuthService } from '../auth/auth.service';
+import { ToasterService } from '../toaster/toaster.service';
+import { ToastNotificationType } from '../../models/notification-type.enum';
 
 @Injectable()
 export class HttpInterceptorInterceptor implements HttpInterceptor {
 
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly toasterService: ToasterService,
+  ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.authService.getAccessToken();
@@ -42,10 +47,13 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
   }
 
   private handleError(res: HttpErrorResponse) {
-    console.error(res.status, res.statusText);
-
-     if (res.status === 401) {
+    if (res.status === 401) {
       this.authService.clearAuthData();
-     }
+
+      this.toasterService.openToast({
+        type: ToastNotificationType.Error,
+        title: res.statusText,
+      });
+    }
   }
 }

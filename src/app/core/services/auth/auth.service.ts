@@ -24,6 +24,15 @@ export class AuthService {
     return this.localStorageService.getItem(localStorageKeys.TOKEN_KEY);
   }
 
+  initializeAuthState(): void {
+    const storedUser = this.localStorageService.getItem(localStorageKeys.USER_KEY);
+    const storedToken = this.localStorageService.getItem(localStorageKeys.TOKEN_KEY);
+
+    if (storedUser && storedToken) {
+      this.setAuthData(storedUser as IUser, storedToken as string);
+    }
+  }
+
   setAuthData(user: IUser, token: string) {
     this.localStorageService.setItem(localStorageKeys.USER_KEY, JSON.stringify(user));
     this.localStorageService.setItem(localStorageKeys.TOKEN_KEY, token);
