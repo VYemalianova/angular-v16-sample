@@ -23,7 +23,9 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.authService.getAccessToken();
-    const apiUrl = environment.apiUrl;
+    const requestType = request.params.get('requestType') ?? 'external';
+    const isInternalRequest = requestType === 'internal';
+    const apiUrl = isInternalRequest ? 'http://localhost:4200' : environment.apiUrl;
     
     if (accessToken) {
       request = request.clone({
@@ -52,7 +54,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
       this.toasterService.openToast({
         type: ToastNotificationType.Error,
-        title: res.statusText,
+        title: 'Missing or invalid authentication token.',
       });
     }
   }

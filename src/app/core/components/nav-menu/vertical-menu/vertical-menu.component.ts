@@ -7,7 +7,6 @@ import { HoroscopeType } from '../../../../modules/shared/models/horoscope.model
 import { IOption } from '../../../../modules/shared/models/option.model';
 import { SignsService } from '../../../../modules/shared/services/signs/signs.service';
 import { getFormattedDateRange } from '../../../../modules/shared/utils/dateUtils';
-import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-vertical-menu',
@@ -24,10 +23,7 @@ export class VerticalMenuComponent extends OnDestroyDirective implements OnInit,
   signsOptions: IOption[] = [];
   horoscopeOptions: IOption[] = [];
 
-  constructor(
-    private readonly signsService: SignsService,
-    private readonly authService: AuthService,
-  ) {
+  constructor(private readonly signsService: SignsService) {
     super();
   }
 
