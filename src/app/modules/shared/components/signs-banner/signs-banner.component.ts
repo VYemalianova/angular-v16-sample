@@ -24,7 +24,7 @@ export class SignsBannerComponent extends OnDestroyDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.signsService.getSigns().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
+    this.signsService.getSignList().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
       this.signs = signs;
     })
   }

@@ -32,7 +32,7 @@ export class HorizontalMenuComponent extends OnDestroyDirective implements OnIni
       value,
     }));
     
-    this.signsService.getSigns().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
+    this.signsService.getSignList().pipe(takeUntil(this.destroy$)).subscribe((signs: ISign[]) => {
       this.signsOptions = signs.map((sign) => ({
         id: sign.id,
         value: sign.signType,

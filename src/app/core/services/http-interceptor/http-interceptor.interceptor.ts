@@ -12,6 +12,7 @@ import { environment } from '../../../../../environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { ToasterService } from '../toaster/toaster.service';
 import { ToastNotificationType } from '../../models/notification-type.enum';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpInterceptorInterceptor implements HttpInterceptor {
@@ -19,6 +20,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
   constructor(
     private readonly authService: AuthService,
     private readonly toasterService: ToasterService,
+    private readonly route: Router,
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -41,7 +43,18 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((res) => {
-        this.handleError(res);
+        if (res.status === 401) {
+          this.authService.clearAuthData();
+
+          this.toasterService.openToast({
+            type: ToastNotificationType.Error,
+            title: 'Missing or invalid authentication token.',
+          });
+        }
+
+        if (res.status === 404) {
+          this.route.navigate(['/not-found']);
+        }
 
         throw res;
       }),
@@ -49,13 +62,6 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
   }
 
   private handleError(res: HttpErrorResponse) {
-    if (res.status === 401) {
-      this.authService.clearAuthData();
 
-      this.toasterService.openToast({
-        type: ToastNotificationType.Error,
-        title: 'Missing or invalid authentication token.',
-      });
-    }
   }
 }

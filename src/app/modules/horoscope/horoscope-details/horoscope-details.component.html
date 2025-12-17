@@ -1,0 +1,31 @@
+<div class="horoscope-page">
+  <ng-container *ngIf="horoscope && sign; else errorScreen">
+    <div class="gradient--selago-wisppink">
+      <div class="horoscope-page-header">
+        <div>
+          <h1 class="gradient--text text-capitalize">
+            {{ horoscope.signType }} {{horoscope.horoscopeType === HoroscopeType.love && 'Daily'}}
+            {{ horoscope.horoscopeType }} Horoscopes
+          </h1>
+
+          <div class="text-caps mt-m">
+            <span *ngIf="horoscope.horoscopeType === HoroscopeType.daily || horoscope.horoscopeType === HoroscopeType.love">
+              Today: {{horoscope.startDate | date:'dddd, MMMM D, YYYY'}}
+            </span>
+
+            <span *ngIf="horoscope.horoscopeType !== HoroscopeType.daily && horoscope.horoscopeType !== HoroscopeType.love">
+              {{ horoscope.horoscopeType }}: <span>{{ horoscope.dateRange }}</span>
+            </span>
+          </div>
+        </div>
+
+        <app-avatar [imagePath]="sign.imageDir" width="99px" height="99px"></app-avatar>
+      </div>
+    </div>
+    <app-signs-banner [type]="horoscope.horoscopeType" [isHeaderHidden]="true"></app-signs-banner>
+  </ng-container>
+
+  <ng-template #errorScreen>
+    <app-error-screen title="Ooops!" message="Something went wrong!"></app-error-screen>
+  </ng-template>
+</div>

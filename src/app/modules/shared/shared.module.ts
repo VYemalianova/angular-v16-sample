@@ -15,6 +15,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { RouterModule } from '@angular/router';
 import { SignsBannerComponent } from './components/signs-banner/signs-banner.component';
 import { ToasterComponent } from './components/toaster/toaster.component';
+import { ErrorScreenComponent } from './components/error-screen/error-screen.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToasterComponent } from './components/toaster/toaster.component';
     AvatarComponent,
     SignsBannerComponent,
     ToasterComponent,
+    ErrorScreenComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { ToasterComponent } from './components/toaster/toaster.component';
     AvatarComponent,
     SignsBannerComponent,
     ToasterComponent,
+    ErrorScreenComponent,
   ]
 })
 export class SharedModule { }

@@ -39,7 +39,7 @@ export class VerticalMenuComponent extends OnDestroyDirective implements OnInit,
       value,
     }));
     
-    this.signsService.getSigns().pipe(takeUntil(this.destroy$)).subscribe((signs) => {
+    this.signsService.getSignList().pipe(takeUntil(this.destroy$)).subscribe((signs) => {
       this.signsOptions = signs.map((sign) => ({
         id: sign.id,
         value: sign.signType,
